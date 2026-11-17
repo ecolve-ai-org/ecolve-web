@@ -1,0 +1,127 @@
+/* ==========================================================
+   base.css — design tokens, reset, typography, layout helpers
+   ========================================================== */
+@font-face{
+  font-family:"Inter";font-style:normal;font-weight:400 600;font-display:swap;
+  src:url("../fonts/inter-latin.woff2") format("woff2");
+}
+
+:root{
+  /* brand — sampled from the ecolve logo: blue #0426e9, cyan #0184ca, green #1a9332 */
+  --brand-blue:#0426e9; --brand-cyan:#0184ca; --brand-green:#1a9332;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --radius:0;
+  --container:80rem;
+  --nav-h:4.5rem;
+  --error:#e5322d; --info:#2d62ff;
+}
+/* ---- dark theme (default) ---- */
+:root,:root[data-theme="dark"]{
+  color-scheme:dark;
+  --primary:#1a73e8; --primary-hover:#4590f0; --primary-light:#0d2a52;
+  --primary-ink:#4db3f2;           /* primary used as TEXT / icon colour */
+  --primary-rgb:26,115,232;
+  --on-primary:#fff;
+  --accent:#3fbf55; --accent-rgb:63,191,85;
+  --bg:#070d1a; --bg-card:#0f1829; --bg-secondary:#17233b;
+  --bg-input:#0a1222; --bg-hover:#16223a;
+  --text:#f2f5fb; --text-2:#9aa6bd; --text-prose:#cdd6e6;
+  --border:#1a263d; --border-2:#2a3a58; --border-alt:#4a5c7e;
+  --success:#5fdc78; --warning:#ffd23a;
+  --grad:linear-gradient(90deg,#4db3f2,#3fbf55);
+}
+/* ---- light theme ---- */
+:root[data-theme="light"]{
+  color-scheme:light;
+  --primary:#0a3fd8; --primary-hover:#0830b0; --primary-light:#dbe6ff;
+  --primary-ink:#0a3fd8;
+  --primary-rgb:10,63,216;
+  --on-primary:#fff;
+  --accent:#1a8a30; --accent-rgb:26,138,48;
+  --bg:#fff; --bg-card:#f3f6fb; --bg-secondary:#e6ecf6;
+  --bg-input:#fff; --bg-hover:#e8eef8;
+  --text:#0b1326; --text-2:#4f5d77; --text-prose:#2a3750;
+  --border:#e0e6f0; --border-2:#ccd5e4; --border-alt:#97a5be;
+  --success:#1a8a30; --warning:#a86b00;
+  --grad:linear-gradient(90deg,#0426e9,#0184ca 55%,#1a9332);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{transition:background-color .25s,color .25s;margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit;text-decoration:none}
+ul,ol{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4,h5,h6,p,figure{margin:0}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+::selection{background:var(--primary);color:var(--on-primary)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--primary);color:var(--on-primary);padding:.75rem 1rem;z-index:200}
+.skip-link:focus{left:0}
+
+/* ---- typography ---- */
+.h1{font-size:4rem;font-weight:600;line-height:1.1}
+.h2{font-size:3rem;font-weight:500;line-height:1.2}
+.h3{font-size:2.5rem;font-weight:500;line-height:1.2}
+.h4{font-size:2rem;font-weight:500;line-height:1.4}
+.h5{font-size:1.5rem;font-weight:500;line-height:1.5}
+.h6{font-size:1.25rem;font-weight:500;line-height:1.5}
+.t-large{font-size:1.5rem;line-height:1.5}
+.t-medium{font-size:1.25rem;line-height:1.5}
+.t-small{font-size:.875rem}
+.t-muted{color:var(--text-2)}
+.t-bold{font-weight:600}
+.t-center{text-align:center}
+.t-gradient{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.section-title{color:var(--primary);letter-spacing:.2rem;text-transform:uppercase;margin-bottom:.5rem;font-weight:500;font-size:.875rem}
+
+/* ---- layout ---- */
+.section{padding-left:2.5rem;padding-right:2.5rem;position:relative;overflow:hidden}
+.container{width:100%;max-width:var(--container);margin-inline:auto;padding-block:8rem;position:relative}
+.container.hero-top{padding-top:10rem}
+.container.tight{padding-block:4rem}
+.content{width:100%;max-width:48rem}
+.content.center{margin-inline:auto;text-align:center}
+.divider{background:var(--border-2);width:100%;height:1px;margin-block:2rem}
+.grid{display:grid;gap:2rem}
+.grid-2{grid-template-columns:repeat(2,1fr);align-items:center}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-2.start{align-items:start}
+.flex{display:flex}.flex-wrap{flex-wrap:wrap}.gap-1{gap:1rem}.gap-2{gap:1.5rem}
+.center-x{justify-content:center}
+.mt-xs{margin-top:.5rem}.mt-s{margin-top:1rem}.mt-m{margin-top:2rem}.mt-l{margin-top:3rem}.mt-xl{margin-top:4rem}
+.mb-xs{margin-bottom:.5rem}.mb-s{margin-bottom:1rem}.mb-m{margin-bottom:2rem}.mb-l{margin-bottom:3rem}
+.bg-alt{background:var(--bg-card)}
+.bordered-top{border-top:1px solid var(--border)}
+
+/* ---- reveal-on-scroll (progressive enhancement; see main.js) ---- */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ---- responsive ---- */
+@media (max-width:991px){
+  .h1{font-size:3rem}.h2{font-size:2.5rem}.h3{font-size:2rem}.h4{font-size:1.6rem}
+  .container{padding-block:6rem}.container.hero-top{padding-top:8rem}
+  .grid-2{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .grid-4{grid-template-columns:1fr 1fr}
+}
+@media (max-width:767px){
+  .h1{font-size:2.5rem}.h2{font-size:2rem}.h3{font-size:1.8rem}.h4{font-size:1.4rem}.h5{font-size:1.25rem}
+  .t-large{font-size:1.25rem}
+  .section{padding-left:1.25rem;padding-right:1.25rem}
+  .container{padding-block:4rem}.container.hero-top{padding-top:7rem}
+  .grid-3,.grid-4{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+
+/* anchor targets clear the fixed navbar */
+[id]{scroll-margin-top:calc(var(--nav-h) + 1rem)}
