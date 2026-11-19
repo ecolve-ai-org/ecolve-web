@@ -31,18 +31,89 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/pages.css">
-<script>document.documentElement.className+=' js';(function(){var d=document.documentElement,t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.setAttribute('data-theme',t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',t==='light'?'#ffffff':'#070d1a')})()</script>
+<script>document.documentElement.className+=' js';</script>
 </head>
 <body>
 <div data-component="header"></div>
 <main id="main" class="page-offset">
 
-<section class="section hero"><div class="container hero-top" style="padding-bottom:3rem"><div class="hero-grid">
+<section class="section hero"><div class="container hero-top" style="padding-bottom:3rem"><div class="hero-grid has-showcase">
 <div class="reveal"><div class="eyebrow-box">AI-native enterprise software</div>
 <h1 class="h1 t-gradient mb-s">Turn data into disclosure, intelligence and revenue</h1>
 <p class="t-medium t-muted">ecolve.ai builds AI-native platforms for ESG reporting, financial analytics and satellite connectivity monetisation, and engineers private AI for enterprises that cannot afford to compromise on data control. Operating from Australia and Sri Lanka.</p>
 <div class="btn-wrap"><a class="btn btn-large" href="contact.html">Book a Demo</a><a class="btn btn-outline btn-large" href="#platforms">Explore Products</a></div></div>
-<div class="accent both reveal"><div class="img-frame" style="aspect-ratio:8/7"><img src="assets/img/hero.jpg" alt="Earth at night with city lights, seen from space" width="800" height="700" fetchpriority="high"></div></div>
+<div class="showcase reveal" id="showcase" aria-roledescription="carousel" aria-label="ecolve.ai product previews">
+<div class="sc-window">
+<div class="sc-bar"><i></i><i></i><i></i><span class="sc-title">Product preview</span><button class="sc-pause" type="button" aria-label="Pause auto-play">Pause</button></div>
+<div class="sc-stage">
+
+<div class="sc-slide active" id="sc-p0" role="tabpanel" aria-labelledby="sc-t0">
+<div class="sc-head" style="--img:url(../img/blog/esg-reporting.jpg)"><b>ESG Suite &middot; Emissions &amp; disclosure</b><span class="sc-live">Live</span></div>
+<div class="esg-grid">
+<div class="sc-card esg-ring"><small>Disclosure readiness</small><div class="ring-wrap"><svg viewBox="0 0 42 42" aria-hidden="true"><circle class="ring-bg" cx="21" cy="21" r="16"/><circle class="ring-fg" cx="21" cy="21" r="16" pathLength="100"/></svg><strong>87%</strong></div></div>
+<div class="sc-card"><small>Emissions by scope</small><div class="bars"><div style="--h:34%"><i></i><span>Scope 1</span></div><div style="--h:52%"><i></i><span>Scope 2</span></div><div style="--h:92%"><i></i><span>Scope 3</span></div></div></div>
+</div>
+<div class="sc-chips"><span>GRI</span><span>TCFD</span><span>SASB</span><span>ISSB</span></div>
+<ul class="sc-feed"><li>Supplier data collected automatically</li><li>Scope 3 estimates reconciled by AI</li><li>Board-ready report drafted</li></ul>
+<div class="sc-foot"><span>From raw data to audit-ready disclosure.</span><a href="esg-suite.html">ESG Suite &rarr;</a></div>
+</div>
+
+<div class="sc-slide" id="sc-p1" role="tabpanel" aria-labelledby="sc-t1" aria-hidden="true">
+<div class="sc-head" style="--img:url(../img/blog/cfo-close.jpg)"><b>CLARA &middot; AI financial analyst</b><span class="sc-live">Live</span></div>
+<div class="chat"><div class="msg"><span class="who">You</span><p class="typed">Why did operating margin dip in Q3?</p></div>
+<div class="msg ai"><span class="who">CLARA</span><div><p>Margin fell 2.1 pts. The main drivers:</p><ul><li><b class="neg">&minus;1.4</b> freight and logistics costs</li><li><b class="neg">&minus;0.9</b> contractor spend, APAC</li><li><b class="pos">+0.2</b> pricing uplift</li></ul></div></div></div>
+<div class="sc-card chart"><small>Operating margin vs budget</small><svg viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path class="budget" d="M0,28 L300,28"/><path class="area" d="M0,30 C30,26 55,18 85,22 S135,14 165,20 S215,40 245,50 S285,52 300,46 L300,70 L0,70Z"/><path class="line" pathLength="1" d="M0,30 C30,26 55,18 85,22 S135,14 165,20 S215,40 245,50 S285,52 300,46"/></svg></div>
+<div class="sc-chips"><span>Variance explained</span><span class="ok">Board pack ready</span></div>
+<div class="sc-foot"><span>Ask in plain English. Get the answer and the pack.</span><a href="clara.html">CLARA &rarr;</a></div>
+</div>
+
+<div class="sc-slide" id="sc-p2" role="tabpanel" aria-labelledby="sc-t2" aria-hidden="true">
+<div class="sc-head" style="--img:url(../img/meridien-starlink-banner.jpg)"><b>Meridien &middot; Starlink monetisation</b><span class="sc-live">Live</span></div>
+<div class="mer-grid">
+<div class="orbit" aria-hidden="true"><span class="earth"></span><span class="o-ring r1"><i class="sat"></i></span><span class="o-ring r2"><i class="sat"></i></span><i class="gs g1"></i><i class="gs g2"></i><i class="gs g3"></i></div>
+<div class="sc-card"><small>Usage to invoice, automated</small><table class="ledger"><thead><tr><th>Site</th><th>Usage</th><th>Billed</th></tr></thead><tbody><tr><td>Remote mine site</td><td>1.2 TB</td><td>$4,180</td></tr><tr><td>Vessel, Fleet 02</td><td>640 GB</td><td>$2,260</td></tr><tr><td>Branch office</td><td>310 GB</td><td>$1,050</td></tr><tr><td>Field depot</td><td>480 GB</td><td>$1,640</td></tr></tbody></table></div>
+</div>
+<div class="sc-chips"><span>Per-customer metering</span><span>Managed plans</span><span class="ok">Revenue</span></div>
+<div class="sc-foot"><span>Turn connectivity into a billable service.</span><a href="meridien.html">Meridien &rarr;</a></div>
+</div>
+
+<div class="sc-slide" id="sc-p3" role="tabpanel" aria-labelledby="sc-t3" aria-hidden="true">
+<div class="sc-head" style="--img:url(../img/private-llm-data-center.jpg)"><b>Private LLM &middot; Your environment</b><span class="sc-live">Secure</span></div>
+<div class="boundary"><span class="blabel">Your cloud or on-premise environment</span><div class="flow"><span class="node">Your data</span><span class="link"></span><span class="node model">Private LLM</span><span class="link"></span><span class="node">Your teams</span></div></div>
+<div class="blocked"><span>Public model APIs</span><b>No data leaves</b></div>
+<div class="chat"><div class="msg"><span class="who">You</span><p class="typed">Summarise supplier contract risks</p></div>
+<div class="msg ai"><span class="who">LLM</span><div><ul><li>3 contracts lack data-residency clauses</li><li>2 renewals fall due within 60 days</li></ul></div></div></div>
+<div class="sc-foot"><span>Your data. Your models. Your boundary.</span><a href="private-llm.html">Private LLM &rarr;</a></div>
+</div>
+
+<div class="sc-slide" id="sc-p4" role="tabpanel" aria-labelledby="sc-t4" aria-hidden="true">
+<div class="sc-head" style="--img:url(../img/ai-solutions.jpg)"><b>AI Solutions Engineering &middot; Custom AI</b><span class="sc-live">Deployed</span></div>
+<div class="boundary"><span class="blabel">Built end to end around your workflows</span><div class="flow"><span class="node">Your data</span><span class="link"></span><span class="node">RAG</span><span class="link"></span><span class="node model">AI agent</span><span class="link"></span><span class="node">Action</span></div></div>
+<ul class="sc-feed"><li>12 data sources connected and indexed</li><li>Agent drafts supplier risk summaries</li><li>Human review and approval built in</li><li>Shipped to production with monitoring</li></ul>
+<div class="sc-chips"><span>Agents</span><span>RAG pipelines</span><span>Data products</span></div>
+<div class="sc-foot"><span>Bespoke AI systems, built by our engineers.</span><a href="ai-engineering.html">AI Engineering &rarr;</a></div>
+</div>
+
+<div class="sc-slide" id="sc-p5" role="tabpanel" aria-labelledby="sc-t5" aria-hidden="true">
+<div class="sc-head" style="--img:url(../img/implementations.jpg)"><b>Climate Tech &middot; Measure, model, reduce</b><span class="sc-live">Live</span></div>
+<div class="sc-card chart"><small>Emissions trajectory vs target</small><svg viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path class="budget" d="M0,56 L300,56"/><path class="area" d="M0,12 C40,14 70,22 110,28 S180,40 230,46 S280,52 300,54 L300,70 L0,70Z"/><path class="line" pathLength="1" d="M0,12 C40,14 70,22 110,28 S180,40 230,46 S280,52 300,54"/></svg></div>
+<div class="levers"><div class="lever" style="--w:78%"><span>Energy efficiency</span><i></i><b>38%</b></div><div class="lever" style="--w:55%"><span>Renewable switch</span><i></i><b>27%</b></div><div class="lever" style="--w:36%"><span>Logistics routing</span><i></i><b>18%</b></div></div>
+<div class="sc-chips"><span>Measure</span><span>Model</span><span class="ok">Reduce</span></div>
+<div class="sc-foot"><span>AI that measures, models and reduces impact.</span><a href="climate-tech.html">Climate Tech &rarr;</a></div>
+</div>
+
+</div>
+<div class="sc-progress" aria-hidden="true"><span></span></div>
+</div>
+<div class="sc-tabs" role="tablist" aria-label="Choose a product">
+<button class="sc-tab" id="sc-t0" role="tab" type="button" aria-selected="true" aria-controls="sc-p0"><i data-icon="leaf"></i><span>ESG Suite</span></button>
+<button class="sc-tab" id="sc-t1" role="tab" type="button" aria-selected="false" aria-controls="sc-p1" tabindex="-1"><i data-icon="chart"></i><span>CLARA</span></button>
+<button class="sc-tab" id="sc-t2" role="tab" type="button" aria-selected="false" aria-controls="sc-p2" tabindex="-1"><i data-icon="satellite"></i><span>Meridien</span></button>
+<button class="sc-tab" id="sc-t3" role="tab" type="button" aria-selected="false" aria-controls="sc-p3" tabindex="-1"><i data-icon="shield"></i><span>Private LLM</span></button>
+<button class="sc-tab" id="sc-t4" role="tab" type="button" aria-selected="false" aria-controls="sc-p4" tabindex="-1"><i data-icon="bot"></i><span>AI Engineering</span></button>
+<button class="sc-tab" id="sc-t5" role="tab" type="button" aria-selected="false" aria-controls="sc-p5" tabindex="-1"><i data-icon="globe"></i><span>Climate Tech</span></button>
+</div>
+</div>
 </div></div></section>
 <section class="section "><div class="container tight"><div id="platforms"><div class="content center reveal"><div class="section-title">Our platforms</div><h2 class="h2 mb-s">Six ways we put AI to work</h2><p class="t-medium t-muted">From sustainability disclosure to Starlink monetisation, ecolve.ai delivers production-grade AI where it moves the numbers.</p></div></div>
 <div class="grid grid-3 mt-l" style="align-items:stretch"><div class="card hover reveal" style="display:flex;flex-direction:column"><div class="img-frame" style="aspect-ratio:16/10;border:0;border-bottom:1px solid var(--border-2)"><img src="assets/img/blog/esg-reporting.jpg" alt="" width="800" height="500" loading="lazy"></div>
@@ -60,7 +131,7 @@
 <div class="btn-wrap" style="margin-top:auto;padding-top:1.5rem"><a class="btn btn-small" href="climate-tech.html">Learn More</a><a class="btn btn-secondary btn-small" href="contact.html?interest=Climate%20Tech%20with%20AI">Get in Touch <i data-icon="right" data-class="icon-s"></i></a></div></div></div></div></div></section>
 <section class="section "><div class="container tight"><div class="grid grid-2" style="gap:5rem"><div class="reveal"><div class="section-title">Transform</div><h2 class="h3 mb-s">Boosting business with applied AI</h2><p class="t-muted mb-m">ecolve.ai specialises in AI that solves hard, regulated, data-heavy enterprise problems. We combine our own products with deep engineering to deliver measurable gains in compliance, finance and operations.</p>
 <div class="grid grid-2 start" style="gap:1.5rem"><div><h3 class="h6 mb-xs">Products</h3><p class="t-muted t-small">Ready-to-deploy platforms for ESG, financial analytics and connectivity monetisation.</p></div><div><h3 class="h6 mb-xs">Engineering</h3><p class="t-muted t-small">Private LLMs, AI agents and custom solutions built around your data and workflows.</p></div></div></div><div class="accent bl reveal"><div class="img-frame aspect-4-3"><img src="assets/img/business.jpg" alt="Colleagues reviewing data on laptops" width="800" height="640" loading="lazy"></div></div></div></div></section>
-<section class="section "><div class="container tight"><div class="grid grid-2" style="gap:5rem"><div class="accent tr reveal"><div class="img-frame aspect-4-3"><img src="assets/img/feature-consulting.jpg" alt="Planning an AI workflow on a whiteboard" width="800" height="640" loading="lazy"></div></div><div class="reveal"><div class="section-title">Why ecolve</div><h2 class="h3 mb-s">Transforming enterprises with powerful, responsible AI</h2><p class="t-muted mb-m">At ecolve.ai, we build AI-native software for organisations facing real pressure: mandatory sustainability disclosure, tighter finance cycles, and the need to adopt AI without surrendering control of their data. Our team brings more than 15 years of experience in national-scale digital infrastructure and enterprise delivery.</p>
+<section class="section "><div class="container tight"><div class="grid grid-2" style="gap:5rem"><div class="accent tr reveal"><div class="img-frame aspect-4-3"><img src="assets/img/feature-consulting.jpg" alt="Planning an AI workflow on a whiteboard" width="800" height="640" loading="lazy"></div></div><div class="reveal"><div class="section-title">Why ecolve</div><h2 class="h3 mb-s">Transforming enterprises with powerful, responsible AI</h2><p class="t-muted mb-m">At ecolve.ai, we build AI-native software for organisations facing real pressure: mandatory sustainability disclosure, tighter finance cycles, and the need to adopt AI without surrendering control of their data. Our team brings more than 3 years of experience in national-scale digital infrastructure and enterprise delivery.</p>
 <ul class="checklist"><li><i data-icon="tick"></i><span>Replace spreadsheets and manual reporting with auditable, AI-assisted workflows.</span></li><li><i data-icon="tick"></i><span>Run language models privately, inside your own cloud or on-premise environment.</span></li><li><i data-icon="tick"></i><span>Turn connectivity and climate data into decisions and new revenue.</span></li></ul>
 <div class="btn-wrap"><a class="btn" href="contact.html">Work with Us</a><a class="btn btn-secondary" href="#platforms">Explore Products</a></div></div></div></div></section>
 <section class="section "><div class="container tight"><div class="grid grid-2" style="gap:5rem"><div class="reveal"><div class="section-title">Innovate</div><h2 class="h3 mb-s">Innovating AI implementation</h2><p class="t-muted mb-m">From first proof of concept to production at scale, ecolve.ai ships AI that is secure, explainable and built for enterprise operations.</p>
@@ -70,7 +141,7 @@
 <div class="grid grid-3 mt-l" style="align-items:stretch"><div class="card pad-s hover reveal"><div style="color:var(--primary-ink);margin-bottom:1.25rem"><i data-icon="chart"></i></div><h3 class="h6 mb-xs">AI Products that Replace Manual Work</h3><p class="t-muted t-small">ESG, finance and connectivity platforms that automate reporting, analysis and billing.</p></div><div class="card pad-s hover reveal"><div style="color:var(--primary-ink);margin-bottom:1.25rem"><i data-icon="shield"></i></div><h3 class="h6 mb-xs">Private AI You Fully Control</h3><p class="t-muted t-small">Private LLM deployments keep sensitive data inside your boundary, with no public model exposure.</p></div><div class="card pad-s hover reveal"><div style="color:var(--primary-ink);margin-bottom:1.25rem"><i data-icon="bot"></i></div><h3 class="h6 mb-xs">Engineering for AI at Scale</h3><p class="t-muted t-small">Our AI Solutions Engineering team designs and delivers custom agents, RAG pipelines and data platforms.</p></div></div>
 <div class="btn-wrap" style="justify-content:center"><a class="btn" href="contact.html">Let&rsquo;s Talk</a></div></div></section>
 <section class="section "><div class="container tight"><div class="grid grid-2" style="gap:5rem"><div class="reveal"><div class="section-title">Track record</div><h2 class="h3 mb-s">ecolve.ai: empowering enterprises with AI</h2><p class="t-muted">A snapshot of our footprint and expertise.</p><div class="btn-wrap"><a class="btn" href="contact.html">Let&rsquo;s Talk</a></div></div>
-<div class="grid grid-2 start reveal" style="gap:2rem"><div class="stat"><strong>15+</strong><span>years of enterprise and national-scale technology experience</span></div><div class="stat"><strong>2</strong><span>offices: Melbourne, Australia and Colombo, Sri Lanka</span></div></div></div></div></section>
+<div class="grid grid-2 start reveal" style="gap:2rem"><div class="stat"><strong>3+</strong><span>years of enterprise and national-scale technology experience</span></div><div class="stat"><strong>2</strong><span>offices: Melbourne, Australia and Colombo, Sri Lanka</span></div></div></div></div></section>
 <section class="section "><div class="container tight"><div class="content center reveal"><div class="section-title">Insights</div><h2 class="h2 mb-s">Discover the latest insights</h2><p class="t-medium t-muted">Practical thinking on ESG, AI and enterprise technology.</p></div><div class="grid grid-3 mt-l" style="align-items:stretch"><a class="card post-card hover reveal" data-tag="ESG" href="blog-posts/why-esg-reporting-is-moving-from-spreadsheets-to-ai.html"><div class="img-frame"><img src="assets/img/blog/esg-reporting.jpg" alt="" loading="lazy" width="800" height="480"></div>
 <div class="card-body"><div class="post-meta mb-s"><span class="tag">ESG</span><span class="t-small t-muted">8 min</span></div><h3 class="h6 mb-s" style="font-size:1.125rem">Why ESG reporting is moving from spreadsheets to AI</h3><span class="link-arrow" style="color:var(--text)">Read more <i data-icon="right" data-class="icon-s"></i></span></div></a><a class="card post-card hover reveal" data-tag="AI" href="blog-posts/private-llms-vs-public-apis-what-enterprises-need-to-know.html"><div class="img-frame"><img src="assets/img/blog/private-llm.jpg" alt="" loading="lazy" width="800" height="480"></div>
 <div class="card-body"><div class="post-meta mb-s"><span class="tag">AI</span><span class="t-small t-muted">10 min</span></div><h3 class="h6 mb-s" style="font-size:1.125rem">Private LLMs vs public APIs: what enterprises actually need to know</h3><span class="link-arrow" style="color:var(--text)">Read more <i data-icon="right" data-class="icon-s"></i></span></div></a><a class="card post-card hover reveal" data-tag="Finance" href="blog-posts/how-ai-is-changing-the-cfos-monthly-close.html"><div class="img-frame"><img src="assets/img/blog/cfo-close.jpg" alt="" loading="lazy" width="800" height="480"></div>
