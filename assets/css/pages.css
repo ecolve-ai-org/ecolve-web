@@ -176,16 +176,16 @@
 .showcase{position:relative;min-width:0;isolation:isolate}
 .showcase::before{content:"";position:absolute;inset:-3rem -2rem;z-index:-1;background:radial-gradient(closest-side,rgba(var(--primary-rgb),.25),transparent);pointer-events:none;animation:scBreathe 6s ease-in-out infinite}
 .showcase::after{content:"";position:absolute;z-index:-1;width:11rem;height:11rem;right:-2.5rem;top:-2.5rem;border-radius:50%;background:radial-gradient(circle,rgba(var(--accent-rgb),.32),transparent 70%);pointer-events:none;animation:scOrb 11s ease-in-out infinite alternate}
-.sc-window{position:relative;animation:scFloat 8s ease-in-out infinite;border:1px solid var(--border-2);background:var(--bg-card);box-shadow:0 2rem 4rem rgba(0,0,0,.5),0 0 0 1px rgba(var(--primary-rgb),.15),0 0 4rem -1rem rgba(var(--primary-rgb),.35)}
+.sc-window{position:relative;border:1px solid var(--border-2);background:var(--bg-card);box-shadow:0 2rem 4rem rgba(0,0,0,.5),0 0 0 1px rgba(var(--primary-rgb),.15),0 0 4rem -1rem rgba(var(--primary-rgb),.35)}
 .sc-stage{position:relative;aspect-ratio:16/11;overflow:hidden;background:var(--bg)}
 .sc-slide{position:absolute;inset:0;display:block;color:inherit;opacity:0;visibility:hidden;transition:opacity .6s,visibility 0s .6s}
 .sc-slide.active{opacity:1;visibility:visible;transition:opacity .6s}
-.sc-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12);translate:calc(var(--px,0) * -1.2%) calc(var(--py,0) * -1.2%);transition:translate .35s ease-out}
+.sc-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);translate:calc(var(--px,0) * -1.2%) calc(var(--py,0) * -1.2%);transition:translate .35s ease-out}
 .sc-slide.active img{animation:scZoom 9s ease-out both}
 .sc-shade{overflow:hidden}
 .sc-shade::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.16) 50%,transparent 62%);transform:translateX(-130%)}
 .sc-slide.active .sc-shade::after{animation:scShine 1.5s .55s ease-out both}
-.sc-cap{translate:calc(var(--px,0) * .7rem) calc(var(--py,0) * .45rem);transition:translate .35s ease-out}
+.sc-cap{animation:scFloat 7s ease-in-out infinite;translate:calc(var(--px,0) * .7rem) calc(var(--py,0) * .45rem);transition:translate .35s ease-out}
 .sc-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,13,26,.1) 20%,rgba(7,13,26,.92) 100%),linear-gradient(90deg,rgba(7,13,26,.55),transparent 70%)}
 .sc-cap{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:flex-start;gap:.55rem;padding:clamp(1rem,3vw,1.75rem)}
 .sc-cap b{font-size:clamp(1.35rem,1rem + 1.3vw,2rem);font-weight:600;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.6)}
@@ -210,11 +210,11 @@
 .sc-tab[aria-selected="true"] .icon{color:var(--primary-ink);animation:scPop .55s cubic-bezier(.3,1.6,.5,1)}
 @keyframes scProg{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes scUp{from{opacity:0;transform:translateY(.8rem)}}
-@keyframes scZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes scZoom{from{transform:scale(1.14)}to{transform:scale(1.06)}}
 @keyframes scShine{to{transform:translateX(130%)}}
+@keyframes scFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-.35rem,0)}}
 @keyframes scBreathe{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
 @keyframes scOrb{from{transform:translate(0,0) scale(1)}to{transform:translate(-3rem,3.5rem) scale(1.25)}}
-@keyframes scFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-.45rem)}}
 @keyframes scPop{0%{transform:scale(.6) rotate(-12deg)}100%{transform:none}}
 @media (max-width:1024px){
   .hero-grid.has-showcase{grid-template-columns:minmax(0,1fr);gap:3rem}
@@ -226,8 +226,7 @@
   .sc-tab{font-size:.72rem;padding:.55rem .2rem}
 }
 @media (max-width:380px){.sc-tabs{grid-template-columns:repeat(2,1fr)}}
-@media (prefers-reduced-motion:reduce){.sc-slide img{transform:none!important;animation:none!important;translate:none}.sc-window,.showcase::before,.showcase::after,.sc-shade::after,.sc-tab .icon{animation:none!important}.sc-cap{translate:none}}
-.showcase.paused .sc-window{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.sc-slide img{transform:none!important;animation:none!important;translate:none}.sc-cap,.showcase::before,.showcase::after,.sc-shade::after,.sc-tab .icon{animation:none!important}.sc-cap{translate:none}}
 
 
 /* ==========================================================
