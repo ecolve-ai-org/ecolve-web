@@ -10,7 +10,7 @@
   (function () {
     var sc = $("#showcase");
     if (!sc) return;
-    var tabs = $$(".sc-tab", sc), slides = $$(".sc-slide", sc), prog = $(".sc-progress", sc), bar = $("span", prog), stage = $(".sc-stage", sc);
+    var tabs = $$(".sc-tab", sc), slides = $$(".sc-slide", sc), prog = $(".sc-progress", sc), bar = $("span", prog), stage = $(".sc-stage", sc), copies = $$("#hero-copy .hc");
     var idx = 0, hover = false, offscreen = false;
     var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -34,6 +34,12 @@
       slides.forEach(function (s, n) {
         s.classList.toggle("active", n === idx);
         s.setAttribute("aria-hidden", String(n !== idx));
+      });
+      copies.forEach(function (c, n) {
+        var on = n === idx;
+        c.classList.toggle("active", on);
+        c.setAttribute("aria-hidden", String(!on));
+        $$("a", c).forEach(function (a) { a.tabIndex = on ? 0 : -1; });
       });
       if (focus) tabs[idx].focus();
       restart();
