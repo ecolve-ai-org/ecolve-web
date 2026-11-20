@@ -10,18 +10,19 @@
   (function () {
     var sc = $("#showcase");
     if (!sc) return;
-    var tabs = $$(".sc-tab", sc), slides = $$(".sc-slide", sc), prog = $(".sc-progress", sc), bar = $("span", prog), pauseBtn = $(".sc-pause", sc);
-    var idx = 0, userPaused = false, hover = false, offscreen = false;
+    var tabs = $$(".sc-tab", sc), slides = $$(".sc-slide", sc), prog = $(".sc-progress", sc), bar = $("span", prog), stage = $(".sc-stage", sc);
+    var idx = 0, hover = false, offscreen = false;
     var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function syncPause() {
-      var stop = userPaused || hover || offscreen || document.hidden;
+      var stop = hover || offscreen || document.hidden;
       prog.classList.toggle("paused", stop);
+      sc.classList.toggle("paused", stop);
     }
     function restart() {
       prog.classList.remove("run");
       void prog.offsetWidth;
-      if (!reduce && !userPaused) prog.classList.add("run");
+      if (!reduce) prog.classList.add("run");
       syncPause();
     }
     function go(i, focus) {
@@ -47,18 +48,20 @@
         else if (e.key === "End") { e.preventDefault(); go(tabs.length - 1, true); }
       });
     });
-    pauseBtn.addEventListener("click", function () {
-      userPaused = !userPaused;
-      pauseBtn.textContent = userPaused ? "Play" : "Pause";
-      pauseBtn.setAttribute("aria-label", userPaused ? "Resume auto-play" : "Pause auto-play");
-      if (!userPaused) restart(); else syncPause();
-    });
-    if (reduce) { pauseBtn.hidden = true; }
     sc.addEventListener("mouseenter", function () { hover = true; syncPause(); });
     sc.addEventListener("mouseleave", function () { hover = false; syncPause(); });
     document.addEventListener("visibilitychange", syncPause);
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; syncPause(); }, { threshold: 0.25 }).observe(sc);
+    }
+    /* subtle mouse parallax on the stage */
+    if (!reduce && window.matchMedia("(hover:hover)").matches) {
+      sc.addEventListener("mousemove", function (e) {
+        var r = stage.getBoundingClientRect();
+        stage.style.setProperty("--px", (((e.clientX - r.left) / r.width - .5) * 2).toFixed(3));
+        stage.style.setProperty("--py", (((e.clientY - r.top) / r.height - .5) * 2).toFixed(3));
+      });
+      sc.addEventListener("mouseleave", function () { stage.style.setProperty("--px", 0); stage.style.setProperty("--py", 0); });
     }
     var x0 = null;
     sc.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
