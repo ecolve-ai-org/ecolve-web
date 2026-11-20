@@ -54,11 +54,13 @@
         else if (e.key === "End") { e.preventDefault(); go(tabs.length - 1, true); }
       });
     });
-    sc.addEventListener("mouseenter", function () { hover = true; syncPause(); });
+    var canHover = window.matchMedia && matchMedia("(hover: hover)").matches;
+    sc.addEventListener("mouseenter", function () { if (canHover) { hover = true; syncPause(); } });
     sc.addEventListener("mouseleave", function () { hover = false; syncPause(); });
     document.addEventListener("visibilitychange", syncPause);
     if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; syncPause(); }, { threshold: 0.25 }).observe(sc);
+      /* watch the whole hero (copy + carousel), not just the carousel: on phones they stack, so either part on screen keeps both rotating */
+      new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; syncPause(); }, { threshold: 0 }).observe(sc.closest(".hero") || sc);
     }
     /* subtle mouse parallax on the stage */
     if (!reduce && window.matchMedia("(hover:hover)").matches) {
